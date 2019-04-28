@@ -1,5 +1,6 @@
 //server setup
-const http = require('http')
+const express = require('express')
+const app = express()
 const port = 3000
 
 const requestHandler = (request, response) => {
@@ -27,12 +28,8 @@ const User = new Schema({
   password: String
 });
 
-const server = http.createServer(requestHandler)
 
-server.listen(port, (err) => {
-  if (err) {
-    return console.log('Some error occured!', err)
-  }
 
-  console.log('Backend is running on port: ' + port);
-})
+app.get('/', (req, res) => res.send('Backend!'))
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
