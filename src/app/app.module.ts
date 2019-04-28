@@ -7,11 +7,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
-import { HomeModule } from './home/home.module';
 import { ShellModule } from './shell/shell.module';
 import { AboutModule } from './about/about.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { LoginComponent } from './components/login/login.component';
+import { DriversComponent } from './components/drivers/drivers.component';
+import { DestinationsComponent } from './components/destinations/destinations.component';
+import { FindtransportComponent } from './components/findtransport/findtransport.component';
+import { MessagesComponent } from './components/messages/messages.component';
 
 @NgModule({
   imports: [
@@ -23,11 +28,18 @@ import { AppRoutingModule } from './app-routing.module';
     CoreModule,
     SharedModule,
     ShellModule,
-    HomeModule,
     AboutModule,
     AppRoutingModule // must be imported as the last module as it contains the fallback route
   ],
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    LoginComponent,
+    DriversComponent,
+    DestinationsComponent,
+    FindtransportComponent,
+    MessagesComponent
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

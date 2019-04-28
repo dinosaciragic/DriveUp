@@ -11,5 +11,10 @@
     "url": "https://github.com/dinosaciragic/DriveUp/backend"
   },
   "author": "Harun Saranovic & Team",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.5.4",
+    "nodemon": "^1.18.11"
+  }
 }
