@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   // Fallback when no prior route is matched
-  { path: '**', redirectTo: '', pathMatch: 'full' }
+  
+  { path: 'register', component: RegisterComponent }
 ];
 
 @NgModule({
