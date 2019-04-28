@@ -10,7 +10,7 @@ const requestHandler = (request, response) => {
 //mongodb://<dbuser>:<dbpassword>@ds147926.mlab.com:47926/driveup
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://ekipa:passowrd1@ds147926.mlab.com:47926/driveup', {useNewUrlParser: true},function(err)=>{
+mongoose.connect('mongodb://ekipa:OFRaidReekKose3@ds147926.mlab.com:47926/driveup', {useNewUrlParser: true},(err)=>{
         if(err) {
             console.log('Some problem with the connection ' +err);
         } else {
