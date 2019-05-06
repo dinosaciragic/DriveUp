@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-drivers',
@@ -6,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./drivers.component.scss']
 })
 export class DriversComponent implements OnInit {
-  constructor() {}
+  constructor(private usersService: UsersService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.usersService.getUsers().subscribe(users => {
+      console.log(users);
+    });
+  }
 }

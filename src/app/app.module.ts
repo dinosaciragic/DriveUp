@@ -17,6 +17,9 @@ import { DriversComponent } from './components/drivers/drivers.component';
 import { DestinationsComponent } from './components/destinations/destinations.component';
 import { FindtransportComponent } from './components/findtransport/findtransport.component';
 import { MessagesComponent } from './components/messages/messages.component';
+import { RegisterComponent } from './components/register/register.component';
+import { UsersService } from '@app/services/users.service';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   imports: [
@@ -38,9 +41,11 @@ import { MessagesComponent } from './components/messages/messages.component';
     DriversComponent,
     DestinationsComponent,
     FindtransportComponent,
-    MessagesComponent
+    MessagesComponent,
+    RegisterComponent,
+    UserComponent
   ],
-  providers: [],
+  providers: [UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

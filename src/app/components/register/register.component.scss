@@ -1,0 +1,19 @@
+.form {
+  width: 30%;
+  margin-left: 35%;
+  text-align: center;
+  margin-top: 100px;
+}
+
+input {
+  border-radius: 25px;
+  font-size: 1.6rem;
+}
+
+input[type="submit"] {
+  margin-top: 30px;
+  padding: 0.2rem 1.4rem;
+  border: none;
+  color: white;
+  background-color: #159c5f;
+}

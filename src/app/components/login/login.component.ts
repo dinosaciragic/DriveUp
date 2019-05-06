@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UsersService } from '@app/services/users.service';
+import { login } from '../../models/login';
 
 @Component({
   selector: 'app-login',
@@ -6,7 +9,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router, private usersService: UsersService) {}
+
+  //user to bind data for login
+  loginUser: login = {
+    email: '',
+    password: ''
+  };
 
   ngOnInit() {}
+
+  Login() {
+    this.usersService.loginUser(this.loginUser).subscribe(user => {
+      this.router.navigate(['/user']);
+    });
+  }
 }

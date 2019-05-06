@@ -1,4 +1,4 @@
-<div class="container p-5">
+<!--<div class="container p-5">
   <div class="row justify-content-center align-items-center">
     <div class="card text-center w-50">
       <div class="card-body">
@@ -20,4 +20,24 @@
       <div class="card-body textcolor"><a class="card-link textcolor" routerLink="/register">Register here</a></div>
     </div>
   </div>
+</div>
+-->
+<div class="form">
+  <h2>Login</h2>
+
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" class="form-control" id="email" required [(ngModel)]="loginUser.email" name="email" />
+    <label for="password">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      required
+      [(ngModel)]="loginUser.password"
+      name="password"
+    />
+    <input type="submit" name="" (click)="Login()" value="Login" />
+  </div>
+  <a class="card-link textcolor" routerLink="/register">Register here</a>
 </div>
