@@ -6,11 +6,18 @@ const cors = require('cors');
 const passport = require('passport');
 const session = require('express-session');
 const flash = require('connect-flash');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 //flash
 app.use(flash());
 //cors
-app.use(cors());
+app.use(
+  cors({
+    origin: ['http://localhost:4200', 'http://localhost:3000'],
+    credentials: true
+  })
+);
 
 //mongodb://<dbuser>:<dbpassword>@:47926/driveup
 const mongoose = require('mongoose');
@@ -26,9 +33,6 @@ mongoose.connect(
     }
   }
 );
-
-//bodyparser
-const bodyParser = require('body-parser');
 
 //bodyparser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -46,87 +50,29 @@ const requestHandler = (request, response) => {
   response.end('Node.js Server!');
 };
 
-require('./config/passport')(passport);
-
 //express session middleware
 app.use(
   session({
+    name: 'user.sid',
     secret: 'secret',
-    resave: true,
-    saveUninitialized: true
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 3600,
+      httpOnly: false,
+      secure: false
+    }
   })
 );
 //Passport Config
-
+require('./config/passport');
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(function(req, res, next) {
-  res.locals.user = req.user || null;
+  res.locals.users = req.users || null;
   next();
 });
-
-/*app.post('/register', (req, res) => {
-  res.send("Hiiiii")
-})
-
-
-
-
-/*
-const Schema = mongoose.Schema;
-const ObjectId = Schema.ObjectId;
-
-const UserSchema = new Schema({
-  id: ObjectId,
-  username: String,
-  password: String
-});
-
-var User = mongoose.model('Users', UserSchema)
-
-//This is how you prepare data for database
-/*
-var userTest = new User({
-  username: 'admin',
-  password: 'admin'
-})
-*/
-
-/*var userTest = new User({
-  username: 'admin',
-  password: 'admin'
-})
-
-app.get('/', (req, res) => {
-  Users.find((err, users) => {
-    res.json(users);
-  })
-});
-*/
-
-/*
-app.post('/', (req, res) => {
-
-  res.send('Backend!');
-
-  const newUser = new User({
-    email: 'Irfan98@live.com',//req.body.email,
-    username: 'Irfanduric',//req.body.username,
-    password: 'Irfanduric'//req.body.password
-  });
-
-  newUser.save()
-  then(newUser => {
-    console.log(newUser);
-  })
-    .catch(err => {
-      console.log(err);
-    });
-
-
-});
-*/
 
 //use routes
 app.use('/users', users);

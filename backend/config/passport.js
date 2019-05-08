@@ -21,6 +21,7 @@ module.exports = function(passport) {
   );
 
   passport.serializeUser(function(user, done) {
+    const logedUser = user;
     console.log(user);
     done(null, user._id);
   });
@@ -31,32 +32,3 @@ module.exports = function(passport) {
     });
   });
 };
-
-/*
-module.exports = passport.use('local', new LocalStrategy({
-    usernameField: 'username',
-    passwordField: 'password'
-},
-    function (username, password, done) {
-        User.findOne({ username: username }, function (err, user) {
-            if (err) { return done(err); }
-            if (!user) {
-                return done(null, false, { message: 'Incorrect username.' });
-            }
-            if (!user.validPassword(password)) {
-                return done(null, false, { message: 'Incorrect password.' });
-            }
-            return done(null, user);
-        });
-    }
-));
-
-passport.serializeUser(function (user, done) {
-    done(null, user.id);
-});
-passport.deserializeUser(function (id, done) {
-    User.findById(id, function (err, user) {
-        done(err, user);
-    });
-});
-*/

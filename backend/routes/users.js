@@ -4,12 +4,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const passport = require('passport');
 const flash = require('connect-flash');
+var jwt = require('jsonwebtoken');
 
 require('../models/User');
 const User = mongoose.model('Users');
 const ObjectId = Schema.ObjectId;
 
-require('../config/passport');
+const user = require('../config/passport')(passport);
+
+const logedUser = require('../config/passport');
 /*const newUser = new User({
     email: 'Irfan98@live.com',//req.body.email,
     username: 'Irfanduric',//req.body.username,
@@ -85,10 +88,19 @@ router.route('/delete/:id').get((req, res) => {
 
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', {
-    successRedirect: '/users',
+    successRedirect: '/users/profile',
     failureRedirect: '/users/login',
     failureFlash: true
   })(req, res, next);
 });
+
+router.get('/profile', isValidUser, function(req, res, next) {
+  return res.status(200).json(req.user);
+});
+
+function isValidUser(req, res, next) {
+  if (req.isAuthenticated()) next();
+  else return res.status(401).json({ message: 'Unauthorized Request' });
+}
 
 module.exports = router;
