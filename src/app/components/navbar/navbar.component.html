@@ -32,7 +32,18 @@
         </ul>
       </div>
 
-      <button class="btn btn-outline-success text-white login" routerLink="/login">Log in</button>
+      <div *ngIf="this.usersService.logedUser == false">
+        <button class="btn btn-outline-success text-white login" routerLink="/login">Log in</button>
+      </div>
+
+      <div *ngIf="this.usersService.logedUser == true">
+        <button class="btn btn-outline-success text-white login" routerLink="/login">Log out</button>
+      </div>
+      <div *ngIf="this.usersService.logedUser == true" class="pl-4">
+        <a routerLink="/user" class="text-secondary">
+          <h3 class="card-link text-secondary">{{ this.usersService.user.username }}</h3>
+        </a>
+      </div>
     </nav>
   </div>
 </div>

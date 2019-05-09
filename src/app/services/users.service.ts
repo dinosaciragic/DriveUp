@@ -14,6 +14,25 @@ const httpOptions = {
 export class UsersService {
   url: string = 'http://localhost:3000';
 
+  //User to get info from user logged in
+  user: any = {
+    id: '',
+    email: '',
+    username: '',
+    password: ''
+  };
+
+  //find user by id
+  id: any;
+
+  //user to log
+  login: login = {
+    email: '',
+    password: ''
+  };
+
+  logedUser: boolean = false;
+
   constructor(private http: HttpClient) {}
 
   getUsers(): Observable<Users[]> {

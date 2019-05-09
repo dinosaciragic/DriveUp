@@ -1,1 +1,6 @@
-<p>user works!</p>
+<div class="container" *ngIf="this.usersService.logedUser == true">
+  <li>logged user id: {{ user._id }}</li>
+  <li>logged user username: {{ user.username }}</li>
+  <li>logged user email: {{ user.email }}</li>
+  <li>logged user password: {{ user.password }}</li>
+</div>

@@ -14,7 +14,10 @@ module.exports = function(passport) {
       }).then(user => {
         if (!user) {
           return done(null, false, { message: 'Dont have a match' });
-        } else console.log('have a match' + user);
+        }
+        if (user.password != password) {
+          return done(null, false, { message: 'Incorrect password.' });
+        }
         return done(null, user);
       });
     })

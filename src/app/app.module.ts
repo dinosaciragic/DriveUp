@@ -20,6 +20,7 @@ import { MessagesComponent } from './components/messages/messages.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UsersService } from '@app/services/users.service';
 import { UserComponent } from './components/user/user.component';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { UserComponent } from './components/user/user.component';
     SharedModule,
     ShellModule,
     AboutModule,
+    FlashMessagesModule.forRoot(),
     AppRoutingModule // must be imported as the last module as it contains the fallback route
   ],
   declarations: [
