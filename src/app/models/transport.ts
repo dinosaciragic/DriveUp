@@ -1,4 +1,5 @@
 export interface Transport {
+  username: String;
   title: String;
   text: String;
   workingHours: String;

@@ -78,11 +78,40 @@ app.use(function(req, res, next) {
 
 //use routes
 app.use('/users', users);
-//app.use('/transport', transport);
+
+const Schema = mongoose.Schema;
+const Transport = mongoose.model('Transports');
+var transportSchema = new Schema({
+  username: String,
+  title: String,
+  text: String,
+  workingHours: String,
+  workingDays: String,
+  car: String,
+  seats: Number,
+  price: Number
+});
 
 app.post('/posttransport', function(req, res) {
-  console.log('POST FINALLY WORKS');
-  console.log(req.isAuthenticated());
+  if ('username') {
+    const newTransport = new Transport({
+      username: req.body.username,
+      title: req.body.title,
+      text: req.body.text,
+      workingHours: req.body.workingHours,
+      workingDays: req.body.workingDays,
+      car: req.body.car,
+      seats: req.body.seats,
+      price: req.body.price
+    });
+
+    newTransport.save((err, user) => {
+      if (err) {
+        console.log(err);
+      } else console.log(newTransport + '\nSAVED TO TRANSPORTS');
+    });
+  }
+  //cnsole.log(req.body);
   //console.log(req.user);
 });
 

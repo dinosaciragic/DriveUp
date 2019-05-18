@@ -6,9 +6,13 @@ const ObjectId = Schema.ObjectId;
 
 const TransportSchema = new Schema({
   id: ObjectId,
-  userId: ObjectId,
+  username: String,
   title: String,
   text: String,
+  workingHours: String,
+  workingDays: String,
+  car: String,
+  seats: Number,
   price: Number
 });
 

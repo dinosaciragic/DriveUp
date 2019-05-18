@@ -2,8 +2,17 @@
   <h1>Post your Transport Service</h1>
 
   <div class="form-group">
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+      required
+      [(ngModel)]="transport.username"
+      style="display: none"
+    />
+    <br />
     <label for="username">Title</label>
-    <input type="text" class="form-control" id="title" required [(ngModel)]="transport.title" name="email" /> <br />
+    <input type="text" class="form-control" id="title" required [(ngModel)]="transport.title" name="text2" /> <br />
     <label for="password">Text</label>
     <textarea name="text" class="form-control" required [(ngModel)]="transport.text" rows="8" cols="80"></textarea>
     <br />

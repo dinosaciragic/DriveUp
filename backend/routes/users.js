@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const passport = require('passport');
 const flash = require('connect-flash');
 var jwt = require('jsonwebtoken');
+const bodyParser = require('body-parser');
 
 require('../models/User');
 const User = mongoose.model('Users');
