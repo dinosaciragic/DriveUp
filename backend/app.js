@@ -1,5 +1,6 @@
 //server setup
 const express = require('express');
+const router = express.Router();
 const app = express();
 const port = 3000;
 const cors = require('cors');
@@ -44,6 +45,7 @@ const User = mongoose.model('Users');
 
 //Load routes
 const users = require('./routes/users');
+const transport = require('./routes/transport');
 
 const requestHandler = (request, response) => {
   console.log(request.url);
@@ -76,5 +78,15 @@ app.use(function(req, res, next) {
 
 //use routes
 app.use('/users', users);
+//app.use('/transport', transport);
+
+app.post('/posttransport', function(req, res) {
+  console.log('POST FINALLY WORKS');
+});
+
+app.get('/posttransport', function(req, res) {
+  console.log('get posttransport works');
+  return 'get posttransport works';
+});
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

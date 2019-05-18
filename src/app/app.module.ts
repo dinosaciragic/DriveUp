@@ -21,6 +21,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { UsersService } from '@app/services/users.service';
 import { UserComponent } from './components/user/user.component';
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { PosttransportComponent } from './components/posttransport/posttransport.component';
 
 @NgModule({
   imports: [
@@ -45,7 +46,8 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
     FindtransportComponent,
     MessagesComponent,
     RegisterComponent,
-    UserComponent
+    UserComponent,
+    PosttransportComponent
   ],
   providers: [UsersService],
   bootstrap: [AppComponent]

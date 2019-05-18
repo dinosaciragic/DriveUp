@@ -1,0 +1,34 @@
+.form {
+  width: 50%;
+  margin-left: 25%;
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  padding: 50px 0;
+}
+
+h2 {
+  margin-bottom: 50px;
+}
+
+input,
+textarea {
+  border-radius: 25px;
+  font-size: 1.6rem;
+}
+
+input[type="submit"] {
+  margin-top: 30px;
+  padding: 0.4em 3.4em;
+  font-size: 1.2em;
+  border: none;
+  color: white;
+  background-color: #159c5f;
+}
+.textcolor {
+  color: #23a984;
+}
+
+:host {
+  background-color: white !important;
+}

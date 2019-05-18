@@ -1,0 +1,14 @@
+<div class="form">
+  <h2>Post your Transport Service</h2>
+
+  <div class="form-group">
+    <label for="username">Title</label>
+    <input type="text" class="form-control" id="title" required [(ngModel)]="postData.title" name="email" /> <br />
+    <label for="password">Text</label>
+    <textarea name="text" class="form-control" required [(ngModel)]="postData.text" rows="8" cols="80"></textarea>
+    <br />
+    <label for="username">Price</label>
+    <input type="price" class="form-control" id="title" required [(ngModel)]="postData.price" name="email" /> <br />
+    <input type="submit" name="" (click)="Post()" value="Post" />
+  </div>
+</div>

@@ -7,6 +7,7 @@ import { FindtransportComponent } from './components/findtransport/findtransport
 import { MessagesComponent } from './components/messages/messages.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UserComponent } from '@app/components/user/user.component';
+import { PosttransportComponent } from './components/posttransport/posttransport.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'messages', component: MessagesComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'user', component: UserComponent },
+  { path: 'posttransport', component: PosttransportComponent },
 
   // Fallback when no prior route is matched
   { path: '**', redirectTo: '', pathMatch: 'full' }
