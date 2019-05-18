@@ -34,13 +34,9 @@ newUser.save((err, user) => {
     password: 'password'
 })*/
 
-//REGISTER (POST) USER
-router.route('/register').post((req, res) => {
-  const newUser = new User({
-    email: req.body.email,
-    username: req.body.username,
-    password: req.body.password
-  });
+//REGISTER (POST) http://localhost:3000/users/register
+router.route('/register').post(function(req, res) {
+  const newUser = new User(req.body);
   newUser
     .save()
     .then(user => {
@@ -50,7 +46,6 @@ router.route('/register').post((req, res) => {
       console.log(err);
     });
 });
-
 //GET ALL USERS
 router.route('/').get((req, res) => {
   User.find((err, users) => {

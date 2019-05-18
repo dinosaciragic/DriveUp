@@ -13,7 +13,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
-    private usersService: UsersService,
+    public usersService: UsersService,
     private flashMessagesService: FlashMessagesService
   ) {}
 

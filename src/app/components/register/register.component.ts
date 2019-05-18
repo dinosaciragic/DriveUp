@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
 
   @ViewChild('userForm') form: any;
 
-  constructor(private usersService: UsersService, private router: Router) {}
+  constructor(public usersService: UsersService, private router: Router) {}
 
   ngOnInit() {}
 
