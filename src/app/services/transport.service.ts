@@ -29,4 +29,8 @@ export class TransportService {
   addTransport(transport: Transport): Observable<Transport> {
     return this.http.post<Transport>(`${this.url}/posttransport`, transport, httpOptions);
   }
+
+  getTransports(): Observable<Transport[]> {
+    return this.http.get<Transport[]>(`${this.url}/gettransports`);
+  }
 }

@@ -119,4 +119,12 @@ app.get('/posttransport', function(req, res) {
   //return 'get posttransport works';
 });
 
+app.get('/gettransports', (req, res) => {
+  Transport.find((err, transp) => {
+    if (err) {
+      console.log(err);
+    } else res.json(transp);
+  });
+});
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

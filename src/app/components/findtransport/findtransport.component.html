@@ -1,1 +1,34 @@
-<p>findtransport works!</p>
+<h1>Find Transport</h1>
+<div class="row">
+  <div class="card transport" *ngFor="let transport of transports">
+    <div class="">
+      <div class="circle">{{ transport.username.charAt(0) }}</div>
+      <h2>{{ transport.username }}</h2>
+    </div>
+    <div class="row">
+      <div class="col-3 desc-gray"><span>Availability</span></div>
+      <div class="col-3 desc-green">
+        <span>{{ transport.workingHours }}</span>
+      </div>
+      <div class="col-3 desc-gray"><span>Working Days</span></div>
+      <div class="col-3 desc-green">
+        <span>{{ transport.workingDays }}</span>
+      </div>
+      <div class="col-3 desc-gray"><span>Car</span></div>
+      <div class="col-3 desc-green">
+        <span>{{ transport.car }}</span>
+      </div>
+      <div class="col-3 desc-gray"><span>Seats</span></div>
+      <div class="col-3 desc-green">
+        <span>{{ transport.seats }}</span>
+      </div>
+    </div>
+    <h1 class="title">{{ transport.title }}</h1>
+    <div class="">
+      <span>{{ transport.text }}</span>
+    </div>
+    <div class="price">
+      <span class="green">{{ transport.price }} KM/h</span>
+    </div>
+  </div>
+</div>
