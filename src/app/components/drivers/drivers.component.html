@@ -1,3 +1,8 @@
-<ul *ngFor="let user of users">
-  <li>{{ user.username }}</li>
-</ul>
+<h1>Drivers</h1>
+<div class="row">
+  <div class="card user" *ngFor="let user of users">
+    <div class="circle">{{ user.username.charAt(0) }}</div>
+    <h2>{{ user.username }}</h2>
+    <h5>{{ user.email }}</h5>
+  </div>
+</div>
