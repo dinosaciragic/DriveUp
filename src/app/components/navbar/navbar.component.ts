@@ -7,7 +7,7 @@ import { UsersService } from '@app/services/users.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  constructor(private usersService: UsersService) {}
+  constructor(public usersService: UsersService) {}
 
   ngOnInit() {}
 }

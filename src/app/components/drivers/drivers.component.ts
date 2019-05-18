@@ -10,7 +10,7 @@ import { Users } from '../../models/User';
 export class DriversComponent implements OnInit {
   users: Users[];
 
-  constructor(private usersService: UsersService) {}
+  constructor(public usersService: UsersService) {}
 
   ngOnInit() {
     this.usersService.getUsers().subscribe(users => {

@@ -8,7 +8,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-  constructor(private usersService: UsersService, private flashMessagesService: FlashMessagesService) {}
+  constructor(public usersService: UsersService, private flashMessagesService: FlashMessagesService) {}
 
   user: any = {
     id: '',
