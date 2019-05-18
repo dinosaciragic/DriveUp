@@ -1,14 +1,31 @@
 <div class="form">
-  <h2>Post your Transport Service</h2>
+  <h1>Post your Transport Service</h1>
 
   <div class="form-group">
     <label for="username">Title</label>
-    <input type="text" class="form-control" id="title" required [(ngModel)]="postData.title" name="email" /> <br />
+    <input type="text" class="form-control" id="title" required [(ngModel)]="transport.title" name="email" /> <br />
     <label for="password">Text</label>
-    <textarea name="text" class="form-control" required [(ngModel)]="postData.text" rows="8" cols="80"></textarea>
+    <textarea name="text" class="form-control" required [(ngModel)]="transport.text" rows="8" cols="80"></textarea>
+    <br />
+    <label for="car">car</label>
+    <input type="car" class="form-control" id="title" required [(ngModel)]="transport.car" name="car" /> <br />
+    <label for="seats">seats</label>
+    <input type="seats" class="form-control" id="title" required [(ngModel)]="transport.seats" name="car" /> <br />
+    <label for="workingHours">workingHours</label>
+    <input
+      type="workingHours"
+      class="form-control"
+      id="title"
+      required
+      [(ngModel)]="transport.workingHours"
+      name="car"
+    />
+    <br />
+    <label for="workingDays">workingDays</label>
+    <input type="workingDays" class="form-control" id="title" required [(ngModel)]="transport.workingDays" name="car" />
     <br />
     <label for="username">Price</label>
-    <input type="price" class="form-control" id="title" required [(ngModel)]="postData.price" name="email" /> <br />
-    <input type="submit" name="" (click)="Post()" value="Post" />
+    <input type="price" class="form-control" id="title" required [(ngModel)]="transport.price" name="email" /> <br />
+    <input type="submit" name="" (click)="onSubmit()" value="Post" />
   </div>
 </div>

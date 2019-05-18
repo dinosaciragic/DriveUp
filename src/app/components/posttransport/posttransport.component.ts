@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FlashMessagesService } from 'angular2-flash-messages';
+import { TransportService } from '../../services/transport.service';
+import { Transport } from '../../models/transport';
 import { Router } from '@angular/router';
-import { PostData } from '../../models/PostData';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-posttransport',
@@ -11,25 +10,23 @@ import { UsersService } from '../../services/users.service';
   styleUrls: ['./posttransport.component.scss']
 })
 export class PosttransportComponent implements OnInit {
-  constructor(private http: HttpClient) {}
+  constructor(public transportService: TransportService, public router: Router) {}
 
-  ngOnInit() {}
-
-  postData: PostData = {
+  //Transport
+  transport: any = {
     title: '',
     text: '',
+    workingHours: '',
+    workingDays: '',
+    car: '',
+    seats: 0,
     price: 0
   };
 
-  httpOptions = {
-    withCredentials: true,
-    headers: new HttpHeaders({ 'Content-type': 'application/json' })
-  };
+  ngOnInit() {}
 
-  Post() {
-    console.log('pos pressed');
-
-    //// TODO: Make posttransport service
-    //// TODO: Make transport table in db
+  onSubmit() {
+    console.log('works');
+    this.transportService.addTransport(this.transport).subscribe(transport => {});
   }
 }

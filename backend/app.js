@@ -82,11 +82,12 @@ app.use('/users', users);
 
 app.post('/posttransport', function(req, res) {
   console.log('POST FINALLY WORKS');
+  console.log(req.isAuthenticated());
+  //console.log(req.user);
 });
 
 app.get('/posttransport', function(req, res) {
-  console.log('get posttransport works');
-  return 'get posttransport works';
+  //return 'get posttransport works';
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
