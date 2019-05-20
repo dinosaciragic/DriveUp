@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const passport = require('passport');
 const flash = require('connect-flash');
-var jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
 
 require('../models/User');
@@ -14,39 +13,43 @@ const ObjectId = Schema.ObjectId;
 const user = require('../config/passport')(passport);
 
 const logedUser = require('../config/passport');
-/*const newUser = new User({
-    email: 'Irfan98@live.com',//req.body.email,
-    username: 'Irfanduric',//req.body.username,
-    password: 'Irfanduric'//req.body.password
-});
-
-newUser.save((err, user) => {
-    if (err) {
-        console.log(err);
-    }
-    else
-        console.log(user);
-});
-*/
-
-/*var userTest = new User({
-    email: 'email',
-    username: 'username',
-    password: 'password'
-})*/
 
 //REGISTER (POST) http://localhost:3000/users/register
 router.route('/register').post(function(req, res) {
-  const newUser = new User(req.body);
-  newUser
-    .save()
-    .then(user => {
-      res.status(200).json({ user: 'added successfully' });
-    })
-    .catch(err => {
-      console.log(err);
-    });
+  User.findOne({ email: req.body.email }).then(user => {
+    if (user) {
+      return res.status(500).end('User already exists.');
+    } else if (req.body.email == '' || req.body.username == '' || req.body.password == '') {
+      return res.status(500).end('Fill in the form.');
+    } else {
+      var newUser = new User({
+        email: req.body.email,
+        username: req.body.username,
+        password: req.body.password
+      });
+      newUser
+        .save()
+        .then(user => {
+          res.status(200).json({ user: 'added successfully' });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  });
 });
+/*
+const newUser = new User(req.body);
+newUser
+  .save()
+  .then(user => {
+    res.status(200).json({ user: 'added successfully' });
+  })
+  .catch(err => {
+    console.log(err);
+  });
+});
+*/
 //GET ALL USERS
 router.route('/').get((req, res) => {
   User.find((err, users) => {
@@ -75,12 +78,7 @@ router.route('/delete/:id').get((req, res) => {
   });
 });
 
-//LOGIN USER
-
-/*function isValidUser(req, res, next) {
-    if (req.isAuthenticated()) next();
-    else console.log('invalid request');
-}*/
+var logedUserID = '';
 
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', {
@@ -90,8 +88,20 @@ router.post('/login', (req, res, next) => {
   })(req, res, next);
 });
 
-router.get('/profile', isValidUser, function(req, res, next) {
+router.get('/profile', isValidUser, (req, res) => {
+  logedUserID = req.user._id;
+  console.log('LOGED USER ID: ' + logedUserID);
   return res.status(200).json(req.user);
+});
+
+router.get('/profile/logedUserID', isValidUser, (req, res) => {
+  return res.status(200).json(logedUserID);
+});
+
+router.get('/logout', isValidUser, (req, res) => {
+  req.logout();
+  //res.redirect('/users/login');
+  return res.status(200).json('User loged out successfully');
 });
 
 function isValidUser(req, res, next) {

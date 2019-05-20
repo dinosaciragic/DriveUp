@@ -26,9 +26,20 @@
   <h2>Login</h2>
 
   <div class="form-group">
-    <label for="username">Email</label>
-    <input type="text" class="form-control" id="email" required [(ngModel)]="loginUser.email" name="email" />
+    <label for="email">Email</label>
+    <input
+      type="text"
+      class="form-control"
+      id="email"
+      required
+      [(ngModel)]="loginUser.email"
+      name="email"
+      pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+      [ngClass]="{ 'is-invalid': loginUserEmail.errors && loginUserEmail.touched }"
+      #loginUserEmail="ngModel"
+    />
     <label for="password">Password</label>
+
     <input
       type="password"
       class="form-control"
@@ -36,7 +47,13 @@
       required
       [(ngModel)]="loginUser.password"
       name="password"
+      #userPassword="ngModel"
     />
+
+    <div [hidden]="!loginUserEmail.errors?.required" class="invalid-feedback"><h6>Email and password required</h6></div>
+
+    <div [hidden]="!loginUserEmail.errors?.pattern" class="invalid-feedback"><h6>Email is not valid</h6></div>
+
     <input type="submit" name="" (click)="Login()" value="Login" />
   </div>
   <a class="card-link textcolor" routerLink="/register">Register here</a>

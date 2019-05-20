@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from '@app/services/users.service';
 import { login } from '../../models/login';
@@ -7,6 +7,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-login',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
@@ -26,18 +27,17 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   Login() {
-    if (this.loginUser.email == '' || this.loginUser.password == '') {
-      this.flashMessagesService.show('Fill username and password fields', { cssClass: 'alert-danger', timeout: 2500 });
-    }
-
-    this.usersService.loginUser(this.loginUser).subscribe(user => {
-      this.usersService.user = user;
-      this.usersService.id = this.usersService.user._id;
-      this.usersService.logedUser = true;
-      this.flashMessagesService.show('Login Success', { cssClass: 'alert-success', timeout: 2500 });
-      this.router.navigate(['/user']);
-    });
+    this.usersService.loginUser(this.loginUser).subscribe(
+      user => {
+        this.usersService.user = user;
+        this.usersService.id = this.usersService.user._id;
+        this.usersService.logedUser = true;
+        this.flashMessagesService.show('Login Success', { cssClass: 'alert-success', timeout: 2500 });
+        this.router.navigate(['/user']);
+      },
+      err => {
+        this.flashMessagesService.show('User does not exists', { cssClass: 'alert-danger', timeout: 2500 });
+      }
+    );
   }
 }
-
-/* treba exportat logovanog usera u user componentu i isLoged isto tako, napraviti navbar koji ce biti vidljiv samo ako je isLoged true*/

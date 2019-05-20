@@ -10,15 +10,7 @@ const flash = require('connect-flash');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
-//flash
-app.use(flash());
-//cors
-app.use(
-  cors({
-    origin: ['http://localhost:4200', 'http://localhost:3000'],
-    credentials: true
-  })
-);
+require('./config/passport')(passport);
 
 //mongodb://<dbuser>:<dbpassword>@:47926/driveup
 const mongoose = require('mongoose');
@@ -35,9 +27,13 @@ mongoose.connect(
   }
 );
 
-//bodyparser middleware
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+//cors
+app.use(
+  cors({
+    origin: ['http://localhost:4200', 'http://localhost:3000'],
+    credentials: true
+  })
+);
 
 //Load Users model
 require('./models/User');
@@ -52,27 +48,28 @@ const requestHandler = (request, response) => {
   response.end('Node.js Server!');
 };
 
+//bodyparser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+//flash
+app.use(flash());
+
 //express session middleware
 app.use(
   session({
-    name: 'user.sid',
     secret: 'secret',
     resave: false,
-    saveUninitialized: false,
-    cookie: {
-      maxAge: 3600,
-      httpOnly: false,
-      secure: false
-    }
+    saveUninitialized: false
   })
 );
 //Passport Config
-require('./config/passport');
+
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(function(req, res, next) {
-  res.locals.users = req.users || null;
+  res.locals.user = req.user || null;
   next();
 });
 

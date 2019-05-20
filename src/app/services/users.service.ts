@@ -53,6 +53,15 @@ export class UsersService {
 
   loginUser(login: login) {
     return this.http.post(`${this.url}/users/login`, login, {
+      observe: 'body',
+      withCredentials: true,
+      headers: new HttpHeaders({ 'Content-type': 'application/json' })
+    });
+  }
+
+  logoutUser() {
+    return this.http.get(`${this.url}/users/logout`, {
+      observe: 'body',
       withCredentials: true,
       headers: new HttpHeaders({ 'Content-type': 'application/json' })
     });

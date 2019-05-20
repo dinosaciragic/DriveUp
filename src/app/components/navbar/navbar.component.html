@@ -40,7 +40,7 @@
       </div>
 
       <div *ngIf="this.usersService.logedUser == true">
-        <button class="btn btn-outline-success text-white login" routerLink="/login">Log out</button>
+        <button class="btn btn-outline-success text-white login" routerLink="/login" (click)="Logout()">Log out</button>
       </div>
       <div *ngIf="this.usersService.logedUser == true" class="pl-4">
         <a routerLink="/user" class="text-secondary">

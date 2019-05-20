@@ -3,7 +3,18 @@
 
   <form class="form-group">
     <label for="email">Email</label>
-    <input type="text" class="form-control" id="email" required [(ngModel)]="user.email" name="email" />
+    <input
+      type="text"
+      class="form-control"
+      id="email"
+      required
+      [(ngModel)]="user.email"
+      name="email"
+      pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+      [ngClass]="{ 'is-invalid': regEmail.errors && regEmail.touched }"
+      #regEmail="ngModel"
+    />
+    <div [hidden]="!regEmail.errors?.pattern" class="invalid-feedback"><h6>Email is not valid</h6></div>
 
     <label for="username">Username</label>
     <input type="text" class="form-control" id="username" required [(ngModel)]="user.username" name="username" />
