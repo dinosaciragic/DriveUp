@@ -12,15 +12,50 @@
     />
     <br />
     <label for="username">Title</label>
-    <input type="text" class="form-control" id="title" required [(ngModel)]="transport.title" name="text2" /> <br />
-    <label for="password">Text</label>
-    <textarea name="text" class="form-control" required [(ngModel)]="transport.text" rows="8" cols="80"></textarea>
+    <input
+      placeholder="Title"
+      type="text"
+      class="form-control"
+      id="title"
+      required
+      [(ngModel)]="transport.title"
+      name="text2"
+    />
     <br />
-    <label for="car">car</label>
-    <input type="car" class="form-control" id="title" required [(ngModel)]="transport.car" name="car" /> <br />
-    <label for="seats">seats</label>
-    <input type="seats" class="form-control" id="title" required [(ngModel)]="transport.seats" name="car" /> <br />
-    <label for="workingHours">workingHours</label>
+    <label for="password">Text</label>
+    <textarea
+      placeholder="Description of the service you offer."
+      name="text"
+      class="form-control"
+      required
+      [(ngModel)]="transport.text"
+      rows="8"
+      cols="80"
+    ></textarea>
+    <br />
+    <label for="car">Car</label>
+    <input
+      placeholder="Car brand and model"
+      type="car"
+      class="form-control"
+      id="title"
+      required
+      [(ngModel)]="transport.car"
+      name="car"
+    />
+    <br />
+    <label for="seats">Number of seats</label>
+    <input
+      placeholder="Number of seats"
+      type="seats"
+      class="form-control"
+      id="title"
+      required
+      [(ngModel)]="transport.seats"
+      name="car"
+    />
+    <br />
+    <label for="workingHours">Hours Available</label>
     <input
       type="workingHours"
       class="form-control"
@@ -28,13 +63,43 @@
       required
       [(ngModel)]="transport.workingHours"
       name="car"
+      placeholder="Hours per day"
     />
     <br />
-    <label for="workingDays">workingDays</label>
-    <input type="workingDays" class="form-control" id="title" required [(ngModel)]="transport.workingDays" name="car" />
+    <label for="workingDays">Days Available</label>
+    <input
+      placeholder="Days per week"
+      type="workingDays"
+      class="form-control"
+      id="title"
+      required
+      [(ngModel)]="transport.workingDays"
+      name="car"
+    />
     <br />
+    <label for="location">Location</label>
+    <input
+      type="location"
+      class="form-control"
+      id="title"
+      required
+      [(ngModel)]="transport.location"
+      name="car"
+      placeholder="City"
+    />
+    <br />
+
     <label for="username">Price</label>
-    <input type="price" class="form-control" id="title" required [(ngModel)]="transport.price" name="email" /> <br />
+    <input
+      placeholder="Amount KM/h"
+      type="price"
+      class="form-control"
+      id="title"
+      required
+      [(ngModel)]="transport.price"
+      name="email"
+    />
+    <br />
     <input type="submit" name="" (click)="onSubmit()" value="Post" />
   </div>
 </div>

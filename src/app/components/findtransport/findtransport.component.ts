@@ -21,4 +21,11 @@ export class FindtransportComponent implements OnInit {
       console.log(this.transports);
     });
   }
+
+  /**
+   * Lifecycle hook that ckecks for new data when being navigated to
+   *  */
+  ngDoCheck() {
+    this.ngOnInit();
+  }
 }
