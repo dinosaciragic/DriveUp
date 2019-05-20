@@ -60,7 +60,7 @@ router.route('/').get((req, res) => {
 });
 
 //GET SINGLE USER BY ID
-router.route('/users/:id').get((req, res) => {
+router.route('/user/:id').get((req, res) => {
   User.findById(req.params.id, (err, user) => {
     if (err) {
       console.log(err);

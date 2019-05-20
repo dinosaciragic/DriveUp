@@ -1,6 +1,7 @@
 <div class="container" *ngIf="this.usersService.logedUser == true">
-  <li>logged user id: {{ user._id }}</li>
-  <li>logged user username: {{ user.username }}</li>
-  <li>logged user email: {{ user.email }}</li>
-  <li>logged user password: {{ user.password }}</li>
+  <div class="card user">
+    <div class="circle">{{ user.username.charAt(0) }}</div>
+    <h2>{{ user.username }}</h2>
+    <h5>{{ user.email }}</h5>
+  </div>
 </div>
