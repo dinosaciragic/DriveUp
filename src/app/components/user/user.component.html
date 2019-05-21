@@ -1,7 +1,52 @@
 <div class="container" *ngIf="this.usersService.logedUser == true">
-  <div class="card user">
-    <div class="circle">{{ user.username.charAt(0) }}</div>
-    <h2>{{ user.username }}</h2>
-    <h5>{{ user.email }}</h5>
+  <div class="row">
+    <div style="padding-top: 20px" class="col-2">
+      <div class="circle">{{ userModel.username.charAt(0) }}</div>
+    </div>
+
+    <div class="col-2 desc-green" style="padding-top: 45px">
+      <span>{{ userModel.username }}</span>
+    </div>
+
+    <div class="row">
+      <div class="col-2 desc-gray"><span>Car</span></div>
+      <div class="col-2 desc-green">
+        <span>{{ userModel.carBrand }}</span>
+      </div>
+
+      <div class="col-2 desc-gray"><span>Email</span></div>
+      <div class="col-2 desc-green">
+        <span>{{ userModel.email }}</span>
+      </div>
+
+      <div class="row">
+        <div class="col-2 desc-gray"><span>Location</span></div>
+        <div class="col-2 desc-green">
+          <span>{{ userModel.location }}</span>
+        </div>
+        <div class="col-2 desc-gray"><span>Car</span></div>
+        <div class="col-2 desc-green">
+          <span>{{ userModel.carBrand }}</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-2 desc-gray"><span>Seats</span></div>
+        <div class="col-2 desc-green">
+          <span>{{ userModel.numOfCarSeats }}</span>
+        </div>
+        <div class="col-2 desc-gray"><span>Average Price</span></div>
+        <div class="col-2 desc-green">
+          <span>{{ userModel.price }} KM/h</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-2 desc-gray"><span>Bio</span></div>
+        <div class="desc-green">
+          <span>{{ userModel.bio }}</span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

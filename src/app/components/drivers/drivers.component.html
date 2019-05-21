@@ -2,7 +2,7 @@
 <div class="row">
   <div class="card user" *ngFor="let user of users">
     <div class="circle">{{ user.username.charAt(0) }}</div>
-    <h2>{{ user.username }}</h2>
+    <h2 (click)="openDriver(user._id)">{{ user.username }}</h2>
     <h5>{{ user.email }}</h5>
   </div>
 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../services/users.service';
 import { Users } from '../../models/User';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-drivers',
@@ -10,11 +11,15 @@ import { Users } from '../../models/User';
 export class DriversComponent implements OnInit {
   users: Users[];
 
-  constructor(public usersService: UsersService) {}
+  constructor(public usersService: UsersService, private router: Router) {}
 
   ngOnInit() {
     this.usersService.getUsers().subscribe(users => {
       this.users = users;
     });
+  }
+
+  openDriver(driverId: any) {
+    this.router.navigate(['/user', { driverId }]);
   }
 }
