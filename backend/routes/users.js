@@ -22,15 +22,11 @@ router.route('/register').post(function(req, res) {
     } else if (req.body.email == '' || req.body.username == '' || req.body.password == '') {
       return res.status(500).end('Fill in the form.');
     } else {
-      var newUser = new User({
-        email: req.body.email,
-        username: req.body.username,
-        password: req.body.password
-      });
+      var newUser = new User(req.body);
       newUser
         .save()
         .then(user => {
-          res.status(200).json({ user: 'added successfully' });
+          res.status(200).json({ newUser });
         })
         .catch(err => {
           console.log(err);
@@ -55,7 +51,7 @@ router.route('/').get((req, res) => {
   User.find((err, users) => {
     if (err) {
       console.log(err);
-    } else res.json(users);
+    } else res.send(users);
   });
 });
 

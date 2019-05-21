@@ -1,26 +1,67 @@
-.user {
+h1 {
+  padding: 50px;
   text-align: center;
+}
+h2 {
+  float: left;
+  margin-top: 30px;
+  margin-left: 30px;
+}
+.row {
+  width: 100%;
+  margin-left: 0%;
+  margin-bottom: 60px;
+}
+.transport {
   background-color: white;
   padding: 50px 1%;
-  width: 23%;
-  margin: 0 1%;
-  margin-bottom: 50px;
+  width: 80%;
+  margin: 0 10%;
+  margin-bottom: 100px;
+  padding: 50px;
   border: solid 1px #ddd;
   -margin-left: 1%;
 }
 
 .circle {
-  width: 10vw;
-  height: 10vw;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   font-size: 50px;
-  color: #ccc;
-  line-height: 10vw;
-  margin-left: 4vw;
-  margin-bottom: 70px;
+  color: #eee;
+  line-height: 100px;
+  margin-bottom: 30px;
   text-align: center;
   background: #000;
   background: #23a984;
   text-transform: uppercase;
   display: inline-block;
+  float: left;
+}
+
+h1.title {
+  float: left;
+  text-align: left;
+  padding: 0;
+  margin-bottom: 36px;
+}
+
+span {
+  font-size: 24px;
+}
+
+.desc-green,
+.green {
+  color: #23a984;
+}
+
+.price {
+  margin-top: 70px;
+  width: 100%;
+  text-align: right;
+}
+
+.price span {
+  font-size: 56px;
+  font-weight: 700;
 }
