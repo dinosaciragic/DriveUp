@@ -11,7 +11,12 @@ import { UsersService } from '../../services/users.service';
   styleUrls: ['./posttransport.component.scss']
 })
 export class PosttransportComponent implements OnInit {
-  constructor(public transportService: TransportService, public usersService: UsersService, public router: Router) {}
+  constructor(
+    public transportService: TransportService,
+    public usersService: UsersService,
+    public router: Router,
+    private flashMessagesService: FlashMessagesService
+  ) {}
 
   //Transport
   transport: any = {
@@ -28,6 +33,10 @@ export class PosttransportComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
-    this.transportService.addTransport(this.transport).subscribe(transport => {});
+    this.transportService.addTransport(this.transport).subscribe(transport => {
+      console.log(transport);
+      this.flashMessagesService.show('Transport posted successfully!', { cssClass: 'alert-success', timeout: 3000 });
+      this.router.navigate(['/user']);
+    });
   }
 }

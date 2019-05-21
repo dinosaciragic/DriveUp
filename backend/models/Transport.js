@@ -13,7 +13,8 @@ const TransportSchema = new Schema({
   workingDays: String,
   car: String,
   seats: Number,
-  price: Number
+  price: Number,
+  user: String
 });
 
 module.exports = mongoose.model('Transports', TransportSchema);

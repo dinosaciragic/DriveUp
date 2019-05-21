@@ -39,6 +39,9 @@ app.use(
 require('./models/User');
 const User = mongoose.model('Users');
 
+require('./models/Transport');
+const Transport = mongoose.model('Transports');
+
 //Load routes
 const users = require('./routes/users');
 const transport = require('./routes/transport');
@@ -75,7 +78,7 @@ app.use(function(req, res, next) {
 
 //use routes
 app.use('/users', users);
-
+/*
 const Schema = mongoose.Schema;
 const Transport = mongoose.model('Transports');
 var transportSchema = new Schema({
@@ -88,8 +91,8 @@ var transportSchema = new Schema({
   seats: Number,
   price: Number
 });
-
-app.post('/posttransport', function(req, res) {
+*/
+/*app.post('/posttransport', function (req, res) {
   if ('username') {
     const newTransport = new Transport({
       username: req.body.username,
@@ -112,9 +115,7 @@ app.post('/posttransport', function(req, res) {
   //console.log(req.user);
 });
 
-app.get('/posttransport', function(req, res) {
-  //return 'get posttransport works';
-});
+*/
 
 app.get('/gettransports', (req, res) => {
   Transport.find((err, transp) => {
